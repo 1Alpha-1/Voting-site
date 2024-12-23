@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidential Voting Poll</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Presidential Voting Poll</h1>
+        <p>Please select your preferred candidate:</p>
+        <form id="votingForm">
+            <div class="voter-id">
+                <label for="voterId">Voter's ID  :</label>
+                <input type="text" id="voterId" name="voterId" required>
+                <small id="idMessage" style="color: red;"></small>
+            </div>
+            <div class="candidate">
+                <input type="radio" id="candidate1" name="candidate" value="Candidate 1" required>
+                <label for="candidate1">
+                    <img src="media/1.jpg" alt="Candidate 1" class="candidate-image">
+                    <img src="media/d.png" alt="Candidate 1" class="candidate-image">
+                    PTS
+                </label>
+            </div>
+            <div class="candidate">
+                <input type="radio" id="candidate2" name="candidate" value="Candidate 2" required>
+                <label for="candidate2">
+                    <img src="media/2.jpg" alt="Candidate 2" class="candidate-image">
+                    <img src="media/b.png" alt="Candidate 2" class="candidate-image">
+                    WTT
+                </label>
+            </div>
+            <div class="candidate">
+                <input type="radio" id="candidate3" name="candidate" value="Candidate 3" required>
+                <label for="candidate3">
+                    <img src="media/3.jpg" alt="Candidate 3" class="candidate-image">
+                    <img src="media/a.webp" alt="Candidate 3" class="candidate-image">
+                    GCC
+            </div>
+            
+            <div class="candidate">
+                <input type="radio" id="candidate4" name="candidate" value="Candidate 4" required>
+                <label for="candidate4">
+                    <img src="media/5.jpg" alt="Candidate 4" class="candidate-image">
+                    <img src="media/c.webp" alt="Candidate 4" class="candidate-image">
+                    GAM
+                </label>
+            </div>
+            <button type="submit">Vote</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Placeholder for JavaScript to check for unique voter IDs
+        const usedVoterIds = new Set();
+
+        document.getElementById('votingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for validation
+
+            const voterId = document.getElementById('voterId').value;
+
+            // Check if the voter ID is unique
+            if (usedVoterIds.has(voterId)) {
+                document.getElementById('idMessage').textContent = "This Voter's ID has already been used. Please enter a unique ID.";
+            } else {
+                usedVoterIds.add(voterId);
+                document.getElementById('idMessage').textContent = ""; // Clear message
+                // Proceed with form submission or further processing
+                alert("Vote submitted successfully for " + voterId);
+                // Here you would typically send the data to the server
+            }
+        });
+    </script>
+</body>
+</html>
